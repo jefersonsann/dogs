@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { ReactComponent as Dogs } from '../Assets/dogs.svg';
 import Usuario from '../Assets/usuario.svg';
+import { UserContext } from '../UserContext';
 
 const Container = styled.header`
   position: fixed;
@@ -24,6 +25,15 @@ const Nav = styled.nav`
 const Logo = styled.div`
   padding: 0.5rem 0;
 `;
+
+const User = styled.div`
+  color: #333;
+  display: flex;
+  align-items: center;
+`;
+
+const Logout = styled.button``;
+
 const Login = styled.div`
   & a {
     color: #333;
@@ -44,6 +54,8 @@ const Login = styled.div`
 `;
 
 const Header = () => {
+  const { data, userLogout } = React.useContext(UserContext);
+
   return (
     <Container>
       <Nav className="container">
@@ -52,9 +64,16 @@ const Header = () => {
             <Dogs />
           </Link>
         </Logo>
-        <Login>
-          <Link to="/login">Login / Criar</Link>
-        </Login>
+        {data ? (
+          <User>
+            <Link to="/perfil">{data.nome}</Link>
+            <Logout onClick={userLogout}>Sair</Logout>
+          </User>
+        ) : (
+          <Login>
+            <Link to="/login">Login / Criar</Link>
+          </Login>
+        )}
       </Nav>
     </Container>
   );
