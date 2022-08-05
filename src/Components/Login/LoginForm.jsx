@@ -7,7 +7,7 @@ import Input from '../Form/Input';
 import TitleForm from './TitleForm';
 import { UserContext } from '../../UserContext';
 
-const Section = styled.section``;
+const Section = styled.main``;
 const Form = styled.form``;
 
 const LoginForm = () => {

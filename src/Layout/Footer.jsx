@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import MouseHover from '../Components/MouseHover';
 
 const Container = styled.footer`
   color: #764701;
@@ -13,12 +12,7 @@ const Container = styled.footer`
 `;
 
 const Footer = () => {
-  return (
-    <Container>
-      Footer
-      <MouseHover />
-    </Container>
-  );
+  return <Container>Footer</Container>;
 };
 
 export default Footer;

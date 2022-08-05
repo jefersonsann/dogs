@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import { ReactComponent as Dogs } from '../Assets/dogs.svg';
 import Usuario from '../Assets/usuario.svg';
 import { UserContext } from '../UserContext';
+import Modal from '../Components/Modal/Modal';
+import ModalLogin from '../Components/Modal/ModalLogin';
 
 const Container = styled.header`
   position: fixed;
@@ -35,21 +37,22 @@ const User = styled.div`
 const Logout = styled.button``;
 
 const Login = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+
   & a {
     color: #333;
     display: flex;
     align-items: center;
-
-    &::after {
-      content: '';
-      display: inline-block;
-      width: 14px;
-      height: 17px;
-      background: url('${Usuario}') no-repeat center center;
-      position: relative;
-      top: -2px;
-      margin-left: 10px;
-    }
+  }
+  &::before {
+    content: '';
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: 2px solid #333;
+    background: url('${Usuario}') no-repeat center center;
   }
 `;
 
@@ -66,12 +69,18 @@ const Header = () => {
         </Logo>
         {data ? (
           <User>
-            <Link to="/perfil">{data.nome}</Link>
+            <Link to="/perfil">Olá, {data.nome}</Link>
             <Logout onClick={userLogout}>Sair</Logout>
           </User>
         ) : (
           <Login>
-            <Link to="/login">Login / Criar</Link>
+            <Modal
+              name="Olá, faça seu login"
+              outer="ou cadastre-se"
+              title="Login"
+            >
+              <ModalLogin />
+            </Modal>
           </Login>
         )}
       </Nav>
