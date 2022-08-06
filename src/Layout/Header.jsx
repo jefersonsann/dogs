@@ -12,7 +12,7 @@ const Container = styled.header`
   top: 0;
   width: 100%;
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.1);
-  background: white;
+  background: var(--colorPrimary);
   z-index: 100;
 `;
 
@@ -29,7 +29,7 @@ const Logo = styled.div`
 `;
 
 const User = styled.div`
-  color: #333;
+  color: var(--colorSecondary);
   display: flex;
   align-items: center;
 `;
@@ -37,22 +37,39 @@ const User = styled.div`
 const Logout = styled.button``;
 
 const Login = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-
   & a {
-    color: #333;
+    color: var(--colorSecondary);
     display: flex;
     align-items: center;
   }
-  &::before {
+  & span::before {
     content: '';
+    position: absolute;
+    top: 10px;
+    left: -38px;
     width: 28px;
     height: 28px;
     border-radius: 50%;
-    border: 2px solid #333;
+    border: 2px solid var(--colorSecondary);
     background: url('${Usuario}') no-repeat center center;
+  }
+
+  & span::after {
+    content: '';
+    position: absolute;
+    bottom: 12px;
+    right: 18px;
+    width: 6px;
+    height: 6px;
+    border-top: 1px solid var(--colorSecondary);
+    border-right: 1px solid var(--colorSecondary);
+    background-color: transparent;
+    transform: rotate(45deg);
+    transition: all 0.3s ease;
+  }
+
+  & span:hover::after {
+    transform: rotate(135deg);
   }
 `;
 

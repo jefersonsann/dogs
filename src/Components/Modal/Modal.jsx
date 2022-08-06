@@ -17,12 +17,13 @@ const ModalContainer = styled.div`
   width: auto;
   position: relative;
   z-index: 1002;
-  cursor: pointer;
 `;
 
 const ModalTitle = styled.span`
+  position: relative;
   font-size: 1rem;
   padding: 0.5rem 0;
+  z-index: 1002;
 
   &:hover {
     color: white;
@@ -36,9 +37,9 @@ const ModalTitle = styled.span`
 const ModalCont = styled.div`
   position: absolute;
   width: 240px;
-  height: 300px;
+  height: auto;
   top: 100%;
-  right: 0px;
+  right: -35px;
   padding: 1rem;
   border-radius: 0.5rem;
   background-color: white;
@@ -52,9 +53,20 @@ const ModalCont = styled.div`
       transform: initial;
     }
   }
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: -6px;
+    right: 50px;
+    width: 12px;
+    height: 12px;
+    background-color: inherit;
+    transform: rotate(45deg);
+  }
 `;
 
-const Modal = ({ name, children, ...props }) => {
+const Modal = ({ children, ...props }) => {
   const [isModal, setIsModal] = React.useState(false);
 
   return (
@@ -65,7 +77,7 @@ const Modal = ({ name, children, ...props }) => {
         onMouseLeave={() => setIsModal(false)}
       >
         <ModalTitle>
-          {name}
+          {props.name}
           <br />
           <strong>{props.outer}</strong>
         </ModalTitle>

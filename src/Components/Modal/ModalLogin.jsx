@@ -26,15 +26,14 @@ const ModalLogin = () => {
         conta
       </div>
       <Link style={{ width: '100%' }} to="/login">
-        <Button style={{ width: '100%' }} placeholder="Entrar" primary />
+        <Button style={{ width: '100%' }} primary>
+          entrar
+        </Button>
       </Link>
       <Link style={{ width: '100%' }} to="/criar">
-        <Button
-          style={{ width: '100%' }}
-          width="100%"
-          placeholder="Cadastrar"
-          secondary
-        />
+        <Button style={{ width: '100%' }} width="100%" secondary>
+          cadastre-se
+        </Button>
       </Link>
       <p>
         comprou na loja física ou no app da Ame?{' '}

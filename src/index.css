@@ -1,6 +1,12 @@
 :root {
   --colorPrimary: #ffbb11;
-  --colorSecondary: #7c5501;
+  --colorSecondary: #614200;
+
+  --colorText-dark: #333;
+  --colorText-light: white;
+  --colorError: #f31;
+
+
 }
 
 * {
@@ -20,6 +26,8 @@ body {
 
 a {
   text-decoration: none;
+  color: var(--colorSecondary);
+  font-weight: 600;
 }
 
 h1,

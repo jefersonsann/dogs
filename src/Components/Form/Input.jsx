@@ -1,15 +1,27 @@
 import React from 'react';
 import styled from 'styled-components';
+import Error from '../Helper/Error';
 
 const Wrapper = styled.div`
+  position: relative;
+  margin-top: 1rem;
+  margin-left: auto;
+  margin-right: auto;
   margin-bottom: 1rem;
 `;
 
 const Label = styled.label`
-  display: block;
-  font-size: 1rem;
+  position: absolute;
+  top: 17px;
+  left: 10px;
+  font-size: 0.7rem;
   line-height: 1;
   padding-bottom: 0.5rem;
+  text-transform: uppercase;
+
+  user-select: none;
+  pointer-events: none;
+  transition: all 0.4s ease-in-out;
 `;
 
 const InputForm = styled.input`
@@ -20,21 +32,24 @@ const InputForm = styled.input`
   border-radius: 0.4rem;
   border: 1px solid #eee;
   background: #eee;
+  font-weight: 600;
   transition: all 0.2s;
 
   &:hover,
   &:focus {
     outline: none;
-    border-color: #fb1;
+    border-color: var(--colorPrimary);
     background: white;
-    box-shadow: 0 0 0 3px #fba;
   }
-`;
 
-const Error = styled.p`
-  font-size: 0.875rem;
-  color: #f31;
-  margin-top: 0.25rem;
+  &:focus ~ label,
+  &:valid ~ label {
+    top: -8px;
+    left: 15px;
+    padding: 0.2rem 0.5rem 0.1rem;
+    background-color: white;
+    border: 1px solid var(--colorPrimary);
+  }
 `;
 
 const Input = ({
@@ -49,7 +64,6 @@ const Input = ({
 }) => {
   return (
     <Wrapper>
-      <Label htmlFor={name}>{label}</Label>
       <InputForm
         id={name}
         name={name}
@@ -59,7 +73,8 @@ const Input = ({
         onChange={onChange}
         onBlur={onBlur}
       />
-      {error && <Error>{error}</Error>}
+      <Label htmlFor={name}>{label}</Label>
+      <Error error={error} />
     </Wrapper>
   );
 };

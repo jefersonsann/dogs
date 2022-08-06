@@ -1,14 +1,38 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { UserContext } from '../../UserContext';
 import styled from 'styled-components';
 import useForm from '../../Hooks/useForm';
-import Button from '../Form/Button';
+import Button from '../Button/Button';
 import Input from '../Form/Input';
 import TitleForm from './TitleForm';
-import { UserContext } from '../../UserContext';
+import Error from '../Helper/Error';
 
-const Section = styled.main``;
-const Form = styled.form``;
+const Section = styled.section`
+  max-width: 360px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 2rem;
+  border-radius: 0.5rem;
+  background-color: white;
+  text-align: center;
+
+  & p {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+  }
+`;
+const Form = styled.form`
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+
+  & p {
+    margin-top: 2px;
+    text-align: left;
+    margin-left: 10px;
+  }
+`;
 
 const LoginForm = () => {
   const username = useForm();
@@ -26,17 +50,45 @@ const LoginForm = () => {
   return (
     <Section>
       <TitleForm titleName="Login" />
-      <Form action="" onSubmit={handleLogin}>
-        <Input label="Usuário" type="text" name="username" {...username} />
-        <Input label="Senha" type="password" name="password" {...password} />
+      <p>
+        Veja seus pedidos de forma fácil, compre mais rápido e tenha uma
+        experiência personalizada :)
+      </p>
+      <Form onSubmit={handleLogin}>
+        <Input
+          label="Usuário"
+          type="text"
+          name="username"
+          autofocus
+          required
+          {...username}
+        />
+        <Input
+          label="Senha"
+          type="password"
+          name="password"
+          required
+          {...password}
+        />
         {loading ? (
-          <Button disabled>Carregando...</Button>
+          <Button disabled>carregando...</Button>
         ) : (
-          <Button>Entrar</Button>
+          <Button primary>
+            <strong>continuar</strong>
+          </Button>
         )}
-        {error && <p>{error}</p>}
+        <Error error={error} />
       </Form>
-      <Link to="/login/criar">Cadastro</Link>
+      <p>
+        <Link to="/login/perdeu">esqueceu?</Link>
+      </p>
+      <p>
+        não tem cadastro? <Link to="/login/criar">cadastre-se</Link>
+      </p>
+      <p>
+        Ao continuar com o acesso, você concorda com a nossa{' '}
+        <Link to="/login/criar">política de privacidade</Link>
+      </p>
     </Section>
   );
 };
