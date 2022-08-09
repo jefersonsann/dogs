@@ -30,7 +30,7 @@ const ModalLogin = () => {
           entrar
         </Button>
       </Link>
-      <Link style={{ width: '100%' }} to="/criar">
+      <Link style={{ width: '100%' }} to="/create">
         <Button style={{ width: '100%' }} width="100%" secondary>
           cadastre-se
         </Button>

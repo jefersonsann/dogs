@@ -74,7 +74,7 @@ const Login = styled.div`
 `;
 
 const Header = () => {
-  const { data, userLogout } = React.useContext(UserContext);
+  const { data } = React.useContext(UserContext);
 
   return (
     <Container>
@@ -86,8 +86,7 @@ const Header = () => {
         </Logo>
         {data ? (
           <User>
-            <Link to="/perfil">Olá, {data.nome}</Link>
-            <Logout onClick={userLogout}>Sair</Logout>
+            <Link to="/account">Olá, {data.nome}</Link>
           </User>
         ) : (
           <Login>

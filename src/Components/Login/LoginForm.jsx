@@ -59,7 +59,6 @@ const LoginForm = () => {
           label="Usuário"
           type="text"
           name="username"
-          autofocus
           required
           {...username}
         />
@@ -80,14 +79,14 @@ const LoginForm = () => {
         <Error error={error} />
       </Form>
       <p>
-        <Link to="/login/perdeu">esqueceu?</Link>
+        <Link to="/login/reset">esqueceu?</Link>
       </p>
       <p>
-        não tem cadastro? <Link to="/login/criar">cadastre-se</Link>
+        não tem cadastro? <Link to="/login/create">cadastre-se</Link>
       </p>
       <p>
         Ao continuar com o acesso, você concorda com a nossa{' '}
-        <Link to="/login/criar">política de privacidade</Link>
+        <Link to="/privacy">política de privacidade</Link>
       </p>
     </Section>
   );
