@@ -18,8 +18,8 @@ const User = () => {
       <UserHeader />
       <Routes>
         <Route path="/account" element={<Feed />} />
-        <Route path="account/post" element={<UserPhotoPost />} />
-        <Route path="account/stats" element={<UserStats />} />
+        <Route path="/post" element={<UserPhotoPost />} />
+        <Route path="/stats" element={<UserStats />} />
       </Routes>
     </Container>
   );

@@ -69,6 +69,7 @@ const ContainerMobile = styled.nav`
     height: initial;
     overflow: visible;
     transform: initial;
+    z-index: 10;
   }
 
   & svg {
