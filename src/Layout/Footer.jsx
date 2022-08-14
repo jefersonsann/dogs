@@ -2,13 +2,13 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Container = styled.footer`
-  color: #764701;
+  color: var(--colorSecondary);
   font-size: 0.875rem;
   font-weight: 600;
   padding: 1rem 0;
   text-align: center;
   text-transform: uppercase;
-  background-color: #fb1;
+  background-color: var(--colorPrimary);
 `;
 
 const Footer = () => {

@@ -18,7 +18,7 @@ const FeedContainer = styled.ul`
   }
 `;
 
-const FeedPhotos = () => {
+const FeedPhotos = ({ setModalPhoto }) => {
   const { data, loading, error, request } = useFetch();
 
   React.useEffect(() => {
@@ -35,7 +35,11 @@ const FeedPhotos = () => {
     return (
       <FeedContainer>
         {data.map((photo) => (
-          <FeedPhotosItem key={photo.id} photo={photo} />
+          <FeedPhotosItem
+            key={photo.id}
+            photo={photo}
+            setModalPhoto={setModalPhoto}
+          />
         ))}
       </FeedContainer>
     );

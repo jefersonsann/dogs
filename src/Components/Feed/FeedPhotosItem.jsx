@@ -41,9 +41,12 @@ const TotalViews = styled.span`
   }
 `;
 
-const FeedPhotosItem = ({ photo }) => {
+const FeedPhotosItem = ({ photo, setModalPhoto }) => {
+  const handleClick = () => {
+    setModalPhoto(photo);
+  };
   return (
-    <LiContainer>
+    <LiContainer onClick={handleClick}>
       <Imagem src={photo.src} alt={photo.title} />
       <TotalViews>{photo.acessos}</TotalViews>
     </LiContainer>
