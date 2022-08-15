@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Visualizacao from '../../Assets/visualizacao.svg';
+import Image from '../Helper/Image';
 
 const LiContainer = styled.li`
   display: grid;
@@ -13,10 +14,11 @@ const LiContainer = styled.li`
       grid-row: span 2;
     }
   }
+  & > div {
+    grid-area: 1/1;
+  }
 `;
-const Imagem = styled.img`
-  grid-area: 1/1;
-`;
+
 const TotalViews = styled.span`
   grid-area: 1/1;
   align-items: center;
@@ -47,7 +49,7 @@ const FeedPhotosItem = ({ photo, setModalPhoto }) => {
   };
   return (
     <LiContainer onClick={handleClick}>
-      <Imagem src={photo.src} alt={photo.title} />
+      <Image src={photo.src} alt={photo.title} />
       <TotalViews>{photo.acessos}</TotalViews>
     </LiContainer>
   );

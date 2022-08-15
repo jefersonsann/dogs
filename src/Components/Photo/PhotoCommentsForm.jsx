@@ -1,10 +1,18 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import useFetch from '../../Hooks/useFetch';
 import { COMMENT_POST } from '../../api';
 import { ReactComponent as Enviar } from '../../Assets/enviar.svg';
 import Error from '../Helper/Error';
 
+const Latir = keyframes`
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+`;
 const FormContainer = styled.form`
   display: grid;
   grid-template-columns: 1fr auto;
@@ -47,6 +55,10 @@ const Button = styled.button`
   &:focus svg path {
     fill: #fea;
     stroke: #fb1;
+  }
+  &:hover svg g,
+  &:focus svg g {
+    animation: ${Latir} 0.6s infinite;
   }
 `;
 

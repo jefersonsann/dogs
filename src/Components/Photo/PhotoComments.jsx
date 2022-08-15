@@ -3,14 +3,9 @@ import styled from 'styled-components';
 import { UserContext } from '../../UserContext';
 import PhotoCommentsForm from './PhotoCommentsForm';
 
-const Container = styled.div`
-  display: grid;
-  grid-template-rows: 1fr auto;
-`;
-
 const Comments = styled.ul`
-  /* overflow-y: auto; */
-  /* word-break: break-word; */
+  overflow-y: auto;
+  word-break: break-word;
   padding: 0 1.5rem;
 
   & li {
@@ -21,10 +16,16 @@ const Comments = styled.ul`
 
 const PhotoComments = (props) => {
   const [comments, setComments] = React.useState(() => props.comments);
+  const commentsSection = React.useRef(null);
   const { login } = React.useContext(UserContext);
+
+  React.useEffect(() => {
+    commentsSection.current.scrollTop = commentsSection.current.scrollHeight;
+  }, [comments]);
+
   return (
-    <Container>
-      <Comments>
+    <>
+      <Comments ref={commentsSection}>
         {comments.map((comment) => (
           <li key={comment.comment_ID}>
             <strong>{comment.comment_author}: </strong>
@@ -37,7 +38,7 @@ const PhotoComments = (props) => {
       ) : (
         'Faça login para poder comentar'
       )}
-    </Container>
+    </>
   );
 };
 

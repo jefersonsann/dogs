@@ -4,6 +4,9 @@ import styled, { keyframes } from 'styled-components';
 import Title from '../Title/Title';
 import PhotoComments from './PhotoComments';
 import Visualizacao from '../../Assets/visualizacao-black.svg';
+import { UserContext } from '../../UserContext';
+import PhotoDelete from './PhotoDelete';
+import Image from '../Helper/Image';
 
 const animeEnter = keyframes`
   to {
@@ -12,6 +15,8 @@ const animeEnter = keyframes`
   }
 `;
 const Container = styled.div`
+  display: grid;
+  grid-template-columns: minmax(20rem, 40rem);
   margin: auto;
   height: auto;
   max-height: calc(100vh - 4rem);
@@ -23,19 +28,13 @@ const Container = styled.div`
   animation: ${animeEnter} 0.3s ease-in-out forwards;
 
   @media (min-width: 45rem) {
+    grid-template-columns: 36rem 20rem;
+    grid-template-rows: auto 1fr auto;
     height: 36rem;
     overflow: hidden;
   }
 `;
-const Wrapper = styled.div`
-  display: grid;
-  grid-template-columns: minmax(20rem, 40rem);
 
-  @media (min-width: 45rem) {
-    grid-template-columns: 36rem 20rem;
-    grid-template-rows: auto 1fr auto;
-  }
-`;
 const Imagem = styled.img`
   grid-row: 1;
   @media (min-width: 45rem) {
@@ -98,35 +97,38 @@ const Attributes = styled.ul`
 `;
 
 const PhotoContent = ({ data }) => {
+  const user = React.useContext(UserContext);
   const { photo, comments } = data;
   return (
     <Container>
-      <Wrapper>
-        <Imagem src={photo.src} alt={photo.title} />
-        <Details>
-          <div>
-            <NameViews>
-              <Author>
+      <Image src={photo.src} alt={photo.title} />
+      <Details>
+        <div>
+          <NameViews>
+            <Author>
+              {user.data && user.data.username === photo.author ? (
+                <PhotoDelete id={photo.id} />
+              ) : (
                 <Link to={`/profile/${photo.author}`}>@{photo.author}</Link>
-              </Author>
-              <Acessos>{photo.acessos}</Acessos>
-            </NameViews>
-            <TitlePhoto>
-              <Link to={`/photo/${photo.id}`}>
-                <Title>{photo.title}</Title>
-              </Link>
-            </TitlePhoto>
-            <Attributes>
-              <li>{photo.peso} kg</li>
-              <li>
-                {photo.idade}
-                {photo.idade === 1 ? ' ano' : ' anos'}
-              </li>
-            </Attributes>
-          </div>
-        </Details>
-        <PhotoComments id={photo.id} comments={comments} />
-      </Wrapper>
+              )}
+            </Author>
+            <Acessos>{photo.acessos}</Acessos>
+          </NameViews>
+          <TitlePhoto>
+            <Link to={`/photo/${photo.id}`}>
+              <Title>{photo.title}</Title>
+            </Link>
+          </TitlePhoto>
+          <Attributes>
+            <li>{photo.peso} kg</li>
+            <li>
+              {photo.idade}
+              {photo.idade === 1 ? ' ano' : ' anos'}
+            </li>
+          </Attributes>
+        </div>
+      </Details>
+      <PhotoComments id={photo.id} comments={comments} />
     </Container>
   );
 };
