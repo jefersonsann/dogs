@@ -10,9 +10,6 @@ const skeleton = keyframes`
 
 `;
 
-const Wrapper = styled.div`
-  display: grid;
-`;
 const Skeleton = styled.div`
   grid-area: 1/1;
   height: 100%;
@@ -38,10 +35,10 @@ const Image = ({ ...props }) => {
   };
 
   return (
-    <Wrapper>
+    <>
       {skeleton && <Skeleton></Skeleton>}
       <Img onLoad={handleLoad} {...props} />
-    </Wrapper>
+    </>
   );
 };
 

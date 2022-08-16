@@ -10,6 +10,7 @@ const FeedContainer = styled.ul`
   display: grid;
   grid-template-columns: 1fr;
   gap: 1rem;
+  margin-top: 1rem;
   margin-bottom: 1rem;
   justify-items: center;
 

@@ -4,8 +4,6 @@ import Feed from '../Components/Feed/Feed';
 
 const Container = styled.section``;
 
-const Wrapper = styled.div``;
-
 const Home = () => {
   return (
     <Container>

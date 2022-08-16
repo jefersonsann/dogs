@@ -15,8 +15,8 @@ const animeEnter = keyframes`
   }
 `;
 const Container = styled.div`
-  display: grid;
-  grid-template-columns: minmax(20rem, 40rem);
+  display: flex;
+  flex-direction: column;
   margin: auto;
   height: auto;
   max-height: calc(100vh - 4rem);
@@ -28,17 +28,18 @@ const Container = styled.div`
   animation: ${animeEnter} 0.3s ease-in-out forwards;
 
   @media (min-width: 45rem) {
+    display: grid;
     grid-template-columns: 36rem 20rem;
     grid-template-rows: auto 1fr auto;
     height: 36rem;
     overflow: hidden;
   }
-`;
 
-const Imagem = styled.img`
-  grid-row: 1;
-  @media (min-width: 45rem) {
-    grid-row: 1/4;
+  & > img {
+    grid-row: 1;
+    @media (min-width: 45rem) {
+      grid-row: 1/4;
+    }
   }
 `;
 
