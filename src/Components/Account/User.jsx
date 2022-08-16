@@ -5,6 +5,7 @@ import UserPhotoPost from './UserPhotoPost';
 import UserStats from './UserStats';
 import UserHeader from './UserHeader';
 import { Routes, Route } from 'react-router-dom';
+import { UserContext } from '../../UserContext';
 
 const Container = styled.section`
   max-width: 50rem;
@@ -13,11 +14,12 @@ const Container = styled.section`
 `;
 
 const User = () => {
+  const { data } = React.useContext(UserContext);
   return (
     <Container>
       <UserHeader />
       <Routes>
-        <Route path="/account" element={<Feed />} />
+        <Route path="/" element={<Feed user={data.id} />} />
         <Route path="/post" element={<UserPhotoPost />} />
         <Route path="/stats" element={<UserStats />} />
       </Routes>

@@ -34,9 +34,9 @@ const Preview = styled.div`
 const Form = styled.form``;
 
 const UserPhotoPost = () => {
-  const name = useForm();
-  const weight = useForm();
-  const age = useForm();
+  const nome = useForm();
+  const peso = useForm('number');
+  const idade = useForm('number');
   const [img, setImg] = React.useState({});
   const { data, error, loading, request } = useFetch();
   const navigate = useNavigate();
@@ -49,9 +49,9 @@ const UserPhotoPost = () => {
     event.preventDefault();
     const formData = new FormData();
     formData.append('img', img.raw);
-    formData.append('name', name.value);
-    formData.append('weight', weight.value);
-    formData.append('age', age.value);
+    formData.append('nome', nome.value);
+    formData.append('peso', peso.value);
+    formData.append('idade', idade.value);
 
     const token = window.localStorage.getItem('token');
     const { url, options } = PHOTO_POST(formData, token);
@@ -74,9 +74,9 @@ const UserPhotoPost = () => {
         />
       )}
       <Form onSubmit={handleSubmit}>
-        <Input label="Nome" type="text" name="name" required {...name} />
-        <Input label="Peso" type="number" name="weight" required {...weight} />
-        <Input label="Idade" type="number" name="age" required {...age} />
+        <Input label="Nome" type="text" name="name" required {...nome} />
+        <Input label="Peso" type="number" name="weight" required {...peso} />
+        <Input label="Idade" type="number" name="age" required {...idade} />
         <input
           type="file"
           name="img"

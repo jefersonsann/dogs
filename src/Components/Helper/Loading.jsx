@@ -39,12 +39,11 @@ const Loading = () => {
     };
   }, []);
 
-  const displayStep = (i) => {
+  function displayStep(i) {
     return {
       display: step === i ? 'block' : 'none',
     };
-  };
-
+  }
   return (
     <Wrapper>
       <Load>

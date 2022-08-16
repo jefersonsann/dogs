@@ -1,6 +1,6 @@
 export const API_URL = 'https://dogsapi.origamid.dev/json';
 
-export const TOKEN_POST = (body) => {
+export function TOKEN_POST(body) {
   return {
     url: API_URL + '/jwt-auth/v1/token',
     options: {
@@ -11,9 +11,9 @@ export const TOKEN_POST = (body) => {
       body: JSON.stringify(body),
     },
   };
-};
+}
 
-export const TOKEN_VALIDATE_POST = (token) => {
+export function TOKEN_VALIDATE_POST(token) {
   return {
     url: API_URL + '/jwt-auth/v1/token/validate',
     options: {
@@ -23,9 +23,9 @@ export const TOKEN_VALIDATE_POST = (token) => {
       },
     },
   };
-};
+}
 
-export const USER_GET = (token) => {
+export function USER_GET(token) {
   return {
     url: API_URL + '/api/user',
     options: {
@@ -35,9 +35,9 @@ export const USER_GET = (token) => {
       },
     },
   };
-};
+}
 
-export const USER_POST = (body) => {
+export function USER_POST(body) {
   return {
     url: API_URL + '/api/user',
     options: {
@@ -48,9 +48,9 @@ export const USER_POST = (body) => {
       body: JSON.stringify(body),
     },
   };
-};
+}
 
-export const PHOTO_POST = (formData, token) => {
+export function PHOTO_POST(formData, token) {
   return {
     url: API_URL + '/api/photo',
     options: {
@@ -61,29 +61,29 @@ export const PHOTO_POST = (formData, token) => {
       body: formData,
     },
   };
-};
+}
 
-export const PHOTOS_GET = ({page, total, user}) => {
+export function PHOTOS_GET({ page, total, user }) {
   return {
     url: `${API_URL}/api/photo/?_page=${page}&_total=${total}&_user=${user}`,
     options: {
       method: 'GET',
-      cache: 'no-store'
+      cache: 'no-store',
     },
   };
-};
+}
 
-export const PHOTO_GET = (id) => {
+export function PHOTO_GET(id) {
   return {
     url: `${API_URL}/api/photo/${id}`,
     options: {
       method: 'GET',
-      cache: 'no-store'
+      cache: 'no-store',
     },
   };
-};
+}
 
-export const COMMENT_POST = (id, body) => {
+export function COMMENT_POST(id, body) {
   return {
     url: `${API_URL}/api/comment/${id}`,
     options: {
@@ -92,12 +92,12 @@ export const COMMENT_POST = (id, body) => {
         'Content-Type': 'application/json',
         Authorization: 'Bearer ' + window.localStorage.getItem('token'),
       },
-      body: JSON.stringify(body)
+      body: JSON.stringify(body),
     },
   };
-};
+}
 
-export const PHOTO_DELETE = (id) => {
+export function PHOTO_DELETE(id) {
   return {
     url: `${API_URL}/api/photo/${id}`,
     options: {
@@ -107,4 +107,4 @@ export const PHOTO_DELETE = (id) => {
       },
     },
   };
-};
+}

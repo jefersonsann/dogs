@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import useFetch from '../../Hooks/useFetch';
 import Error from '../Helper/Error';
-import Loading from '../Helper/Error';
+import Loading from '../Helper/Loading';
 import { PHOTO_GET } from '../../api';
 import PhotoContent from '../Photo/PhotoContent';
 
@@ -30,9 +30,9 @@ const FeedModal = ({ photo, setModalPhoto }) => {
     request(url, options);
   }, [photo, request]);
 
-  const outsideClick = (event) => {
+  function outsideClick(event) {
     if (event.target === event.currentTarget) setModalPhoto(null);
-  };
+  }
 
   return (
     <ContainerModal onClick={outsideClick}>
