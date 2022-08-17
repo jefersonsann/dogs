@@ -4,13 +4,10 @@ import Button from '../Button/Button';
 import Input from '../Form/Input';
 import useFetch from '../../Hooks/useFetch';
 import TitleForm from './TitleForm';
-import styled from 'styled-components';
 import { PASSWORD_RESET } from '../../api';
 import Error from '../Helper/Error';
 import { useNavigate } from 'react-router-dom';
 import { Head } from '../Helper/Head';
-
-const Form = styled.form``;
 
 const LoginPassowordReset = () => {
   const [login, setLogin] = React.useState('');
@@ -42,10 +39,10 @@ const LoginPassowordReset = () => {
   }
 
   return (
-    <div>
+    <section>
       <Head title="Resete a senha" />
       <TitleForm titleName="Resete a senha" />
-      <Form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit}>
         <Input
           label="Nova Senha"
           type="password"
@@ -60,9 +57,9 @@ const LoginPassowordReset = () => {
             <strong>resetar</strong>
           </Button>
         )}
-      </Form>
+      </form>
       <Error error={error} />
-    </div>
+    </section>
   );
 };
 

@@ -78,7 +78,7 @@ const LoginForm = () => {
             <strong>continuar</strong>
           </Button>
         )}
-        <Error error={error} />
+        <Error error={error && 'Dados incorretos'} />
       </Form>
       <p>
         <Link to="/login/lost">esqueceu?</Link>
