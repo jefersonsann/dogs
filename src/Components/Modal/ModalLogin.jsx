@@ -9,6 +9,7 @@ const ModalContent = styled.section`
   flex-direction: column;
   gap: 1rem;
   padding: 0.7rem;
+  color: var(--colorText);
 
   & .never {
     font-size: 0.8rem;

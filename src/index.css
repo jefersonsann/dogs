@@ -1,12 +1,11 @@
 :root {
-  --colorPrimary: #ffbb11;
-  --colorSecondary: #614200;
+  --colorPrimary: #fb1;
+  --colorSecondary: hsl(60, 97%, 15%);
+  --colorLink:hsl(60, 100%, 10%);
 
-  --colorText-dark: #333;
-  --colorText-light: white;
+  --colorText: #333;
   --colorError: #f31;
-
-
+  --colorSuccess: #4c1;
 }
 
 * {
@@ -21,12 +20,11 @@ body {
   --fontSecondary: 'Spectral', Georgia;
   font-family: var(--fontPrimary);
 
-  padding-top: 4rem;
 }
 
 a {
   text-decoration: none;
-  color: var(--colorSecondary);
+  color: var(--colorLink);
   font-weight: 600;
 }
 
@@ -56,6 +54,15 @@ input {
   color: #333;
 }
 
+main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - 112px);
+  margin-top: 4rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
 .container {
   max-width: 50rem;
   padding: 0 1rem;

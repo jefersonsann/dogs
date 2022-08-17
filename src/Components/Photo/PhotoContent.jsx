@@ -15,11 +15,10 @@ const animeEnter = keyframes`
   }
 `;
 const Container = styled.div`
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
   margin: auto;
-  height: auto;
-  max-height: calc(100vh - 4rem);
+  height: calc(100vh - 112px);
   border-radius: 0.5rem;
   background-color: white;
   overflow-y: auto;
@@ -28,18 +27,29 @@ const Container = styled.div`
   animation: ${animeEnter} 0.3s ease-in-out forwards;
 
   @media (min-width: 45rem) {
-    display: grid;
-    grid-template-columns: 36rem 20rem;
-    grid-template-rows: auto 1fr auto;
-    height: 36rem;
+    grid-template-columns: 1fr 20rem;
+    grid-template-rows: 1fr;
+    align-items: center;
+    justify-content: center;
     overflow: hidden;
   }
 
   & > img {
     grid-row: 1;
+    max-width: 100%;
+    max-height: 100%;
     @media (min-width: 45rem) {
       grid-row: 1/4;
     }
+  }
+`;
+
+const Infos = styled.div`
+  @media (min-width: 45rem) {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    height: 100%;
+    overflow: hidden;
   }
 `;
 
@@ -47,7 +57,7 @@ const Details = styled.div`
   padding: 2rem 1.5rem 0 1.5rem;
 `;
 
-const NameViews = styled.p`
+const NameViews = styled.div`
   opacity: 0.5;
   margin-bottom: 1rem;
   display: flex;
@@ -103,33 +113,35 @@ const PhotoContent = ({ data }) => {
   return (
     <Container>
       <Image src={photo.src} alt={photo.title} />
-      <Details>
-        <div>
-          <NameViews>
-            <Author>
-              {user.data && user.data.username === photo.author ? (
-                <PhotoDelete id={photo.id} />
-              ) : (
-                <Link to={`/profile/${photo.author}`}>@{photo.author}</Link>
-              )}
-            </Author>
-            <Acessos>{photo.acessos}</Acessos>
-          </NameViews>
-          <TitlePhoto>
-            <Link to={`/photo/${photo.id}`}>
-              <Title>{photo.title}</Title>
-            </Link>
-          </TitlePhoto>
-          <Attributes>
-            <li>{photo.peso} kg</li>
-            <li>
-              {photo.idade}
-              {photo.idade === 1 ? ' ano' : ' anos'}
-            </li>
-          </Attributes>
-        </div>
-      </Details>
-      <PhotoComments id={photo.id} comments={comments} />
+      <Infos>
+        <Details>
+          <div>
+            <NameViews>
+              <Author>
+                {user.data && user.data.username === photo.author ? (
+                  <PhotoDelete id={photo.id} />
+                ) : (
+                  <Link to={`/profile/${photo.author}`}>@{photo.author}</Link>
+                )}
+              </Author>
+              <Acessos>{photo.acessos}</Acessos>
+            </NameViews>
+            <TitlePhoto>
+              <Link to={`/photo/${photo.id}`}>
+                <Title>{photo.title}</Title>
+              </Link>
+            </TitlePhoto>
+            <Attributes>
+              <li>{photo.peso} kg</li>
+              <li>
+                {photo.idade}
+                {photo.idade === 1 ? ' ano' : ' anos'}
+              </li>
+            </Attributes>
+          </div>
+        </Details>
+        <PhotoComments id={photo.id} comments={comments} />
+      </Infos>
     </Container>
   );
 };

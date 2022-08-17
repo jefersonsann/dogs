@@ -117,7 +117,7 @@ const ContainerDesk = styled.nav`
 
     &.active {
       background: white;
-      box-shadow: 0 0 0 3px #fea;
+      box-shadow: 0 0 0 3px #eee;
       border-color: var(--colorPrimary);
 
       & svg > * {
@@ -130,7 +130,7 @@ const ContainerDesk = styled.nav`
   & button:hover {
     background: white;
     box-shadow: 0 0 0 3px #eee;
-    border-color: var(--colorText-dark);
+    border-color: var(--colorPrimary);
     outline: none;
   }
 `;

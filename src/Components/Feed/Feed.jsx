@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import FeedModal from './FeedModal';
 import FeedPhotos from './FeedPhotos';
+import PropTypes from 'prop-types';
 
 const FeedContainer = styled.section`
   max-width: 50rem;
@@ -64,6 +65,17 @@ const Feed = ({ user }) => {
       )}
     </FeedContainer>
   );
+};
+
+Feed.defaultProps = {
+  user: 0,
+};
+
+Feed.propTypes = {
+  user: PropTypes.oneOfType([
+    PropTypes.string.isRequired,
+    PropTypes.number.isRequired,
+  ]),
 };
 
 export default Feed;

@@ -8,7 +8,7 @@ const Container = styled.h1`
   margin: 1rem 0;
   position: relative;
   z-index: 1;
-  color: var(--colorText-dark);
+  color: var(--colorText);
 
   @media (min-width: 40rem) {
     font-size: 3rem;

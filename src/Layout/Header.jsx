@@ -14,6 +14,10 @@ const Container = styled.header`
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.1);
   background: var(--colorPrimary);
   z-index: 100;
+
+  & svg * {
+    fill: var(--colorSecondary);
+  }
 `;
 
 const Nav = styled.nav`
@@ -26,19 +30,25 @@ const Nav = styled.nav`
 
 const Logo = styled.div`
   padding: 0.5rem 0;
+
+  & svg > * {
+    fill: var(--colorSecondary);
+  }
 `;
 
 const User = styled.div`
-  color: var(--colorSecondary);
   display: flex;
   align-items: center;
+  & a {
+    color: var(--colorLink);
+  }
 `;
 
-const Logout = styled.button``;
-
 const Login = styled.div`
+  color: var(--colorSecondary);
+
   & a {
-    color: var(--colorSecondary);
+    color: var(--colorLink);
     display: flex;
     align-items: center;
   }
@@ -64,12 +74,8 @@ const Login = styled.div`
     border-top: 1px solid var(--colorSecondary);
     border-right: 1px solid var(--colorSecondary);
     background-color: transparent;
-    transform: rotate(45deg);
-    transition: all 0.3s ease;
-  }
-
-  & span:hover::after {
     transform: rotate(135deg);
+    transition: all 0.3s ease;
   }
 `;
 

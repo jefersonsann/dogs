@@ -7,6 +7,7 @@ import useFetch from '../../Hooks/useFetch';
 import { PHOTO_POST } from '../../api';
 import Error from '../Helper/Error';
 import { useNavigate } from 'react-router-dom';
+import { Head } from '../Helper/Head';
 
 const Container = styled.section`
   display: block;
@@ -67,6 +68,7 @@ const UserPhotoPost = () => {
 
   return (
     <Container>
+      <Head title="Poste sua foto" />
       {img.preview && (
         <Preview
           style={{ backgroundImage: `url('${img.preview}')` }}

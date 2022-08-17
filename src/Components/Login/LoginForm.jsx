@@ -7,6 +7,7 @@ import Button from '../Button/Button';
 import Input from '../Form/Input';
 import TitleForm from './TitleForm';
 import Error from '../Helper/Error';
+import { Head } from '../Helper/Head';
 
 const Section = styled.section`
   max-width: 360px;
@@ -49,6 +50,7 @@ const LoginForm = () => {
   }
   return (
     <Section>
+      <Head title="Login" />
       <TitleForm titleName="Login" />
       <p>
         Veja seus pedidos de forma fácil, compre mais rápido e tenha uma
@@ -79,7 +81,7 @@ const LoginForm = () => {
         <Error error={error} />
       </Form>
       <p>
-        <Link to="/login/reset">esqueceu?</Link>
+        <Link to="/login/lost">esqueceu?</Link>
       </p>
       <p>
         não tem cadastro? <Link to="/login/create">cadastre-se</Link>
